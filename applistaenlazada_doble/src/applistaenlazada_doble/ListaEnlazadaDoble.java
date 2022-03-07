@@ -43,30 +43,43 @@ public class ListaEnlazadaDoble {
         if(this.head==null){
             this.setHead(newNode);//Enlace
         }else{
-            Nodo temp = this.head;
-            Nodo aux = newNode;
-            aux.setNext(temp);
-            this.setHead(aux);
+            Nodo temp = lastNode();
+            lastNode().setNext(newNode);
+            newNode.setBefore(temp);
+            newNode.setNext(null);
         }
     }
     
     public void putNodeInTheMiddle(Nodo nodeToWork, Nodo newNode, boolean next){
         Nodo temp = this.head;
         Nodo aux;
+        Nodo before;
         
         while(temp!=null){
             if(!next){
-                if(temp.getNext()==nodeToWork){
-                    aux = temp.getNext();
+                if(temp==nodeToWork.getBefore()){
+                    before=temp;
+                    aux = nodeToWork;
+                    
+                    newNode.setBefore(before);
                     newNode.setNext(aux);
-                    temp.setNext(newNode);
+                    
+                    before.setNext(newNode);
+                    nodeToWork.setBefore(newNode);
+                    
                     break;
                 }
             }else{
                 if(temp == nodeToWork){
-                    aux = nodeToWork.getNext();
+                    before=temp;
+                    aux=temp.getNext();
+                    
+                    newNode.setBefore(before);
                     newNode.setNext(aux);
+                    
                     temp.setNext(newNode);
+                    aux.setBefore(newNode);
+                    
                     break;
                 }
             }
