@@ -43,10 +43,10 @@ public class ListaEnlazadaDoble {
         if(this.head==null){
             this.setHead(newNode);//Enlace
         }else{
-            Nodo temp = lastNode();
-            lastNode().setNext(newNode);
-            newNode.setBefore(temp);
-            newNode.setNext(null);
+            newNode.setNext(this.head);
+            newNode.setBefore(null);
+            this.head.setBefore(newNode);
+            this.head = newNode;
         }
     }
     
@@ -112,6 +112,10 @@ public class ListaEnlazadaDoble {
         if(this.head==null){
             this.setHead(newNode);//Enlace
         }else{
+            Nodo temp = lastNode();
+            newNode.setBefore(temp);
+            newNode.setNext(null);
+            
             lastNode().setNext(newNode);
         }
     }

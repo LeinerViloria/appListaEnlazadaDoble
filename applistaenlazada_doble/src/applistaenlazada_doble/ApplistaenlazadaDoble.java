@@ -222,7 +222,21 @@ public class ApplistaenlazadaDoble {
     //Metodo para listar uno a uno los nodos de la lista
     public static void nodeList(Nodo node){
         Nodo temp = node;
-        while (temp != null) { show(temp); temp = temp.getNext(); }   
+        int goTo = 0;
+        while (temp != null) { 
+            show(temp); 
+            goTo = navigate();
+            temp = (goTo == 1) ? temp.getBefore() : temp.getNext();
+        }   
+    }
+    
+    public static int navigate(){
+        int option = 0;
+        do{
+            option=Integer.parseInt(validString("1) Mostrar el estudiante anterior\n"+
+                                                "2) Mostrar el estudiante siguiente", true, false));
+        }while(option<1 || option>2);
+        return option;
     }
     
     public static int optionsMenu(){
