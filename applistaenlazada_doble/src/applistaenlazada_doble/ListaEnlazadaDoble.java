@@ -146,11 +146,13 @@ public class ListaEnlazadaDoble {
         Nodo prev ;
         if(nodeToDelete==this.head){
             this.head=this.head.getNext();
+            this.head.setBefore(null);
         }else{
             prev = this.head;
             while (prev.getNext()!= nodeToDelete) {                
                 prev=prev.getNext();
             }
+            nodeToDelete.getNext().setBefore(prev);
             prev.setNext(nodeToDelete.getNext());
         }
         
@@ -204,32 +206,23 @@ public class ListaEnlazadaDoble {
         }
     }
     
-    //Se coge el metodo burbuja y se acomoda a lo requerido
-    public void bubbleMethod(){
-        Nodo temp;
-        int i=0;
-        Nodo aux;
-            
-        while(i<this.getNodesLenght()){
-            temp = this.head;
-            
-            while(temp!=null){
-                
-                if(temp.getNext()!=null){
-                    if(temp.getCode()>temp.getNext().getCode()){
-                        aux = temp;
-                        temp = temp.getNext();
-                        temp.setNext(aux);
-                    }
-                }
-            
-                temp=temp.getNext();
-            }
-
-            i++;
-        }
+    //Se coge el metodo de insercion y se acomoda a lo requerido
+    public void insertionMethod(){
+        Nodo temp = this.head;
+        Nodo next;
+        float currentMark = 0;
         
-        System.out.println("Termino la ejecucion");
+        while(temp!=null){
+            currentMark = temp.finalMark();
+            
+            next = temp.getNext();
+            
+            if(next!=null){
+                
+            }
+           
+            temp = temp.getNext();
+        }
         
     }
 }

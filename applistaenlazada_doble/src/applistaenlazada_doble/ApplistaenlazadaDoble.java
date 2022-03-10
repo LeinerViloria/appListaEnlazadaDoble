@@ -112,7 +112,7 @@ public class ApplistaenlazadaDoble {
                     break;
                 case 10:
                     JOptionPane.showMessageDialog(null, "Se ordenara de menor a mayor");
-                    list.bubbleMethod();
+                    list.insertionMethod();
                     option = optionsMenu();
                     break;
                 case 11:
